@@ -8,7 +8,7 @@
 	},
 	"id": "nichie.song-folder-opener",
 	"name": "Song Folder Opener",
-	"version": "v1.0.0",
+	"version": "v1.0.1",
 	"developer": "nichie",
 	"description": "Opens the sog folder",
 	"dependencies": {

@@ -30,11 +30,12 @@ class $modify(MyCustomSongLayer, CustomSongLayer) {
 
 	void onOpenSongFolder(CCObject*) {
 		auto path = std::string(MusicDownloadManager::sharedState()->pathForSongFolder(1));
+		std::error_code ec;
 
-		if (!path.empty()) { geode::utils::string::pathToString(path); }
-
-		if (!std::filesystem::exists(path)) {
-			log::error("song folder path missing: {}", path);
+		if (!std::filesystem::exists(path, ec)) {
+			if (ec) log::error("couldn't check song folder {}: {}", path, ec.message());
+			else  log::error("song folder path missing: {}", path);
+			
 			return;
 		}
 
